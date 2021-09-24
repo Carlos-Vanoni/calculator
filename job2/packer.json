@@ -1,0 +1,49 @@
+{
+	"variables": {
+		"dockerhub_username": "",
+		"dockerhub_password":"",
+		"dockerhub_repository":""
+	},
+
+    "builders": [
+        {  "type": "docker",  
+            "image": "ubuntu:20.04",  
+            "commit": true,  
+            "changes": [       
+                "EXPOSE 8083",      
+                "ENTRYPOINT [\"java\", \"-jar\", \"calculator.jar\"]" ]}
+    ],
+
+    "provisioners": [
+        {"type" : "shell",
+        "incline": [
+            "apt-get update", "apt-get install python3 python3-pip python3-apt -yq ", "pip3 install ansible" 
+        ]
+        },
+        {
+			"type": "ansible-local",
+			"playbook_file": "playbook.yml"
+		},
+		{
+			"type": "file",
+			"source": "calculator.jar",
+			"destination": "calculator.jar"
+		}	 
+    ],
+    "post-processors":[
+		[
+			{
+				"type": "docker-tag",
+				"repository": "{{user `dockerhub_repository`}}",
+				"tag": "calculator-app"
+			},
+			{
+				"type": "docker-push",
+				"login":true,
+				"login_username":"{{user `dockerhub_username`}}",
+				"login_password":"{{user `dockerhub_password`}}"
+			}
+		]
+	]
+
+}
