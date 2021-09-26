@@ -33,16 +33,22 @@ pipeline {
                     username: 'carlos-vanoni',
                     password: 'Jfrog123',
                 )
+                
+            }
+        }
+            stage('Publish artifactory') {
+            steps {
                 rtUpload (
-                    serverId: 'Artifactory',
-                    spec: '''{
-                          "files": [
-                            {
-                              "pattern": "build/libs/*.war",
-                              "target": "calculator"
-                            }
-                         ]
-                    }''')
+                    serverId: "Artifactory",
+                    spec: """{
+                                "files": [
+                                    {
+                                        "pattern": "build/libs/calculator.war",
+                                        "target": "calculator-app"
+                                    }
+                                ]
+                    }"""
+                )
             }
         }
          stage('build info') {
@@ -50,7 +56,8 @@ pipeline {
                 rtPublishBuildInfo (
                     serverId: "Artifactory"
                     )
+                }
             }
-        }
+         
     }
 }
