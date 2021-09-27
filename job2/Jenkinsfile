@@ -8,20 +8,13 @@ pipeline {
     stages {
         stage ('Get Artifact from JFrog') {
             steps {
-		rtServer (
-		     id: 'Artifactory',
-             url: 'http://192.168.0.6:8082/artifactory',
-             username: 'carlos-vanoni',
-             password: 'Jfrog123',
-		)
-            
                 rtDownload (
 		    serverId: 'localjfrog',
 		    spec: '''{
 			  "files": [
 			    {
-			      'pattern": "calculator/calculator.war',
-			      'target": "job1/build/libs/calculator.war'
+			      'pattern": "calculator/calculator.jar',
+			      'target": "job1/build/libs/calculator.jar'
 			    }
 			  ]
 		    }'''
@@ -31,7 +24,7 @@ pipeline {
         
         stage ('Docker Build Image and Deploy in DockerHub') {
             steps {
-                sh 'packer build -var "dockerhub_username=$DOCKERHUB_CREDENTIALS_USR" -var "dockerhub_password=$DOCKERHUB_CREDENTIALS_PSW" -var "dockerhub_repository=$DOCKERHUB_REPOSITORY" "job2-infra/temafinal1template.json"'
+                sh 'packer build -var "dockerhub_username=carlosvanoni" -var "dockerhub_password=dockerhub" -var "dockerhub_repository=$DOCKERHUB_REPOSITORY" "job2/temafinal1.json"'
             }
         }
     }
