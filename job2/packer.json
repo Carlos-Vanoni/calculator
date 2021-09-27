@@ -37,11 +37,11 @@
 				"type": "docker-tag",
 				"repository": "{{user `dockerhub_repository`}}",
 				"tags": "calculator",
-				"force": true
+				"force": "true"
 			},
 			{
 				"type": "docker-push",
-				"login":true,
+				"login": "true",
 				"login_username":"{{user `dockerhub_username`}}",
 				"login_password":"{{user `dockerhub_password`}}"
 			}
