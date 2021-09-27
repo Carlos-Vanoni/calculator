@@ -1,63 +1,37 @@
 pipeline {
-    
+
     agent any
 
     stages {
         
-        
-        stage('Checkout repository') {
+
+        stage('Get artifact from JFrog server') {
             steps {
-                git branch: 'main', url: "https://github.com/Carlos-Vanoni/calculator.git"
-            }
-        }
-        stage('Get permission') {
-            steps {
-                sh "chmod +x -R ${env.WORKSPACE}"
-            }
-        }
-         stage('Test application') {
-            steps {
-                sh './gradlew test'
-            }
-        }
-        stage('Build application') {
-            steps {
-                sh './gradlew build'
-            }
-        }
-        stage('Depoly') {
-            steps {
-                rtServer (
-                    id: 'Artifactory',
-                    url: 'http://192.168.0.6:8082/artifactory',
-                    username: 'carlos-vanoni',
-                    password: 'Jfrog123',
-                )
-                
-            }
-        }
-            stage('Publish artifactory') {
-            steps {
-                rtUpload (
+                rtDownload (
                     serverId: "Artifactory",
                     spec: """{
-                                "files": [
-                                    {
-                                        "pattern": "build/libs/calculator.war",
-                                        "target": "calculator-app"
-                                    }
-                                ]
+                        "files": [
+                            {
+                                "pattern": "calculator-app/calculator.jar",
+                                "target": "job1/build/libs/calculator.jar"
+                            }
+                        ]
                     }"""
                 )
             }
         }
-         stage('build info') {
+          stage('build info') {
             steps {
                 rtPublishBuildInfo (
                     serverId: "Artifactory"
                     )
-                }
             }
-         
+        }
+
+        stage('Packer build') {
+            steps {
+                sh 'packer build  -var "dockerhub_repository_name=tema-final1" -var "dockerhub_username=carlosvanoni" -var "dockerhub_user_password=dockerhub" "calculator/job2/packer.json "'
+            }
+        }
     }
 }
