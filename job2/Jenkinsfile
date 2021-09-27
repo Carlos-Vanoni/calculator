@@ -6,7 +6,7 @@ pipeline {
         stage ('Get Artifact from JFrog') {
             steps {
                 rtDownload (
-		    serverId: 'localjfrog',
+		    serverId: 'Artifactory',
 		    spec: '''{
 			  "files": [
 			    {
