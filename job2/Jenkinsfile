@@ -18,7 +18,12 @@ pipeline {
 		)
             }
         }
-        
+	    
+        stage('Get permission') {
+            steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
+            }
+        }
         stage ('Build Image and Deploy in DockerHub') {
             steps {
                 sh 'packer build -var "dockerhub_username=carlosvanoni" -var "dockerhub_password=dockerhub" -var "dockerhub_repository=$DOCKERHUB_REPOSITORY" "job2/packer.json"'
