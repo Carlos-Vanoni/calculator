@@ -8,10 +8,10 @@ pipeline {
                 rtDownload (
 		    serverId: 'Artifactory',
 		    spec: '''{
-			  'files': [
+			  "files": [
 			    {
-			      'pattern': 'calculator/calculator.jar',
-			      'target': 'job1/build/libs/calculator.jar'
+			      "pattern": "calculator/calculator.jar",
+			       "target": "job1/build/libs/calculator.jar"
 			    }
 			  ]
 		    }'''
