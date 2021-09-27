@@ -37,7 +37,6 @@
 				"type": "docker-tag",
 				"repository": "{{user `dockerhub_repository`}}",
 				"tags": "calculator",
-				"force": true
 
 			},
 			{
