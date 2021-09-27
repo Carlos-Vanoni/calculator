@@ -28,7 +28,7 @@
     {
       "type": "file",
       "source": "/var/lib/jenkins/workspace/job2/job1/build/libs/calculator.jar",
-      "destination": "/apache-Tomcat9/webapps/calculator.jar"
+      "destination": "/calculator.jar"
     }
   ],
     "post-processors":[
