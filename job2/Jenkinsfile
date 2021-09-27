@@ -21,7 +21,7 @@ pipeline {
         
         stage ('Docker Build Image and Deploy in DockerHub') {
             steps {
-                sh 'packer build -var "dockerhub_username=carlosvanoni" -var "dockerhub_password=dockerhub" -var "dockerhub_repository=$DOCKERHUB_REPOSITORY" "packer.json"'
+                sh 'packer build -var "dockerhub_username=carlosvanoni" -var "dockerhub_password=dockerhub" -var "dockerhub_repository=$DOCKERHUB_REPOSITORY" "job2/packer.json"'
             }
         }
     }
