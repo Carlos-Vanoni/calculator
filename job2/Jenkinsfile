@@ -3,7 +3,7 @@ pipeline {
 	
 
     stages {
-        stage ('Get Artifact from JFrog') {
+        stage ('Get Artifact') {
             steps {
                 rtDownload (
 		    serverId: 'Artifactory',
