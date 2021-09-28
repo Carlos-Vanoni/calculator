@@ -10,7 +10,7 @@
             "image": "ubuntu:20.04",  
             "commit": true,  
             "changes": [       
-                "EXPOSE 8083",      
+                "EXPOSE 8090",      
                 "ENTRYPOINT [\"java\", \"-jar\", \"calculator.jar\"]" ]}
     ],
 
