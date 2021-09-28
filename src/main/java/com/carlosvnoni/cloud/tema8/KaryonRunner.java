@@ -15,7 +15,7 @@ public class KaryonRunner {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Config.class);
         HealthCheckHandler healthCheck = (HealthcheckResource) applicationContext.getBean("healthcheckResource");
 
-        RxNetty.createHttpServer(8080, new RxNettyHandler("/healthCheck",
+        RxNetty.createHttpServer(8090, new RxNettyHandler("/healthCheck",
                 new HealthCheckEndpoint(healthCheck),
                 (Calculator) applicationContext.getBean("calculator"))).startAndWait();
     }
