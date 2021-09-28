@@ -6,7 +6,7 @@ def springVersion = '5.3.8'
 def karyonVersion = '2.2.0-rc.2'
 def junit5Version = '5.7.2'
 
-
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
