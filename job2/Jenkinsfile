@@ -2,6 +2,10 @@ pipeline {
 	
     agent any
 	
+	environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+    }
+	
 
     stages {
         stage ('Get Artifact') {
@@ -23,7 +27,7 @@ pipeline {
         
         stage ('Build Image and Deploy in DockerHub') {
             steps {
- sh 'packer build  -var "dockerhub_repository=carlosvanoni/tema-final1" -var "dockerhub_username=carlosvanoni" -var "dockerhub_password=dockerhub" "job2/packer.json"'
+ sh 'packer build  -var "dockerhub_repository=carlosvanoni/tema-final1" -var "dockerhub_username=$DOCKERHUB_CREDENTIALS_USR" -var "dockerhub_password=$DOCKERHUB_CREDENTIALS_PSW" "job2/packer.json"'
             }
         }
     }
