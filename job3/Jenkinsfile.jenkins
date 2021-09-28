@@ -1,0 +1,19 @@
+
+pipeline {
+
+   agent any
+
+   stages {
+      stage('Download image from Dockerhub') {
+         steps {
+            sh 'docker pull carlosvanoni/tema-final1:calculator-tag'
+         }
+      }
+
+      stage('Run Docker image') {
+         steps {
+            sh 'docker run -p 8090:8090 -d carlosvanoni/tema-final1:calculator-tag'
+         }
+      }
+   }
+}
