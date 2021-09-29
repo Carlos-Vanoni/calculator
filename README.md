@@ -7,7 +7,7 @@ Repositorio: https://github.com/Carlos-Vanoni/calculator.git
 
 - *Jenkins*
 
-    1.Baixe o Jenkins from the [aqui](https://www.jenkins.io/download/)
+    1.Baixe o Jenkins [aqui](https://www.jenkins.io/download/)
  seguindo esses passos na [documentção](https://www.jenkins.io/doc/book/installing/)
     2. se tudo tiver certo, o Jnekins vai estar hospedado na URL `http://localhost:8080`.
     3. Ao acessar o Jenkins ele irá pedir uma password, que você consegue pelo caminho `/var/lib/jenkins/secrets/initialAdminPassword`
