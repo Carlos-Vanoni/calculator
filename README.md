@@ -8,11 +8,12 @@ Repositorio: https://github.com/Carlos-Vanoni/calculator.git
 - *Jenkins*
 
     1.Baixe o Jenkins [aqui](https://www.jenkins.io/download/)
- seguindo esses passos na [documentção](https://www.jenkins.io/doc/book/installing/)
-    2. se tudo tiver certo, o Jnekins vai estar hospedado na URL `http://localhost:8080`
-    3. Ao acessar o Jenkins ele irá pedir uma password, que você consegue pelo caminho `/var/lib/jenkins/secrets/initialAdminPassword`
-    4. Isntale os plugins sugeridos.
-    5. É necessário baixar mais um plugin. Seguindo os passos `Manage Jenkins > Manage Plugins > Available` procure e baixe um plugin chamado `Artifactory Plugin`.
+    2. seguindo esses passos na [documentção](https://www.jenkins.io/doc/book/installing/)
+    3.  se tudo tiver certo, o Jnekins vai estar hospedado na URL `http://localhost:8080`
+    4.  Ao acessar o Jenkins ele irá pedir uma password, que você consegue pelo caminho `/var/lib/jenkins/secrets/initialAdminPassword`
+    5.   Instale os plugins sugeridos.
+    6.   É necessário baixar mais um plugin. Seguindo os passos `Manage Jenkins > Manage Plugins > Available` procure e baixe um plugin chamado `Artifactory Plugin`.
+
 
 - *JFrog Artifactory*
     1. Baixe JFrog Artifactory [aqui](https://jfrog.com/download-jfrog-platform/) seguindo esses passos na [documentção](https://www.jfrog.com/confluence/display/JFROG/Installing+Artifactory)
